@@ -38,10 +38,15 @@ class Note(models.Model):
     title = models.CharField(max_length=100)
     content = models.CharField()
     priority = models.IntegerField(choices=PRIORITY_CHOICES, default=1)
+    pinned = models.BooleanField(default=False)
+    archived = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    pinned = models.BooleanField()
-    archived = models.BooleanField()
+
+    def save(self, *args, **kwargs):
+        if self.archived:
+            self.pinned = False
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
