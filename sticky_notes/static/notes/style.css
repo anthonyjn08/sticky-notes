@@ -1,0 +1,45 @@
+/* Common card styles */
+.note-card {
+  border: 2px solid black;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Common title styles */
+.note-card .note-title {
+  text-decoration: underline;
+  margin-bottom: 0.5rem;
+}
+
+/* Priority-specific shadows */
+.shadow-low {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+} /* Low */
+.shadow-medium {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+} /* Medium */
+.shadow-high {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
+} /* High */
+
+/* Title underline colors */
+.note-card .high {
+  text-decoration-color: red;
+}
+.note-card .medium {
+  text-decoration-color: goldenrod;
+}
+.note-card .low {
+  text-decoration-color: green;
+}
+
+/* Pinned and archived icons */
+.pinned {
+  color: gold;
+  margin-left: 5px;
+}
+.archived {
+  color: gray;
+  margin-left: 5px;
+}

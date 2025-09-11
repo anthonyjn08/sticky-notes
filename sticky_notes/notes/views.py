@@ -13,7 +13,7 @@ def note_list(request):
     - return: Rendered template with all notes.
     """
     # Toggle to show or hide archived notes.
-    show_archived = request.GET.get("archived") == "true"
+    show_archived = request.GET.get("archived") == "1"
 
     notes = Note.objects.filter(
         user=request.user,
@@ -27,7 +27,19 @@ def note_list(request):
         "page_title": "List of Notes",
     }
 
-    return render(request, "notes/notes_list.html", context)
+    # Set shadow and title classes for template
+    for note in notes:
+        if note.priority == 3:
+            note.shadow_class = "shadow-high"
+            note.title_class = "high"
+        elif note.priority == 2:
+            note.shadow_class = "shadow-medium"
+            note.title_class = "medium"
+        else:
+            note.shadow_class = "shadow-low"
+            note.title_class = "low"
+
+    return render(request, "notes/note_list.html", context)
 
 
 @login_required

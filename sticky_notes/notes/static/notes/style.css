@@ -1,36 +1,57 @@
-/* Priority styling for notes */
-.priority-1 {
-  border: 2px solid green;
+/* Body text style */
+body {
+  font-family: "Handlee", cursive;
+  font-weight: 600;
+  font-style: normal;
 }
 
-.priority-1 .note-title {
+/* Common card styles */
+.note-card {
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  height: 15rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Common title styles */
+.note-card .note-title {
   text-decoration: underline;
+  margin-bottom: 0.5rem;
+}
+
+/* Priority-specific shadows */
+.shadow-low {
+  box-shadow: 10px 15px rgba(0, 128, 0, 0.5);
+}
+.shadow-medium {
+  box-shadow: 10px 15px rgba(255, 215, 0, 0.7);
+}
+.shadow-high {
+  box-shadow: 10px 15px rgba(255, 0, 0, 0.5);
+}
+
+/* Title underline colors */
+.note-card .high {
+  text-decoration-color: red;
+}
+.note-card .medium {
+  text-decoration-color: goldenrod;
+}
+.note-card .low {
   text-decoration-color: green;
 }
 
-.priority-2 {
-  border: 2px solid goldenrod;
-}
-
-.priority-2 .note-title {
-  text-decoration: underline;
-  text-decoration-color: goldenrod;
-}
-
-.priority-3 {
-  border: 2px solid red;
-}
-
-.priority-3 .note-title {
-  text-decoration: underline;
-  text-decoration-color: red;
-}
-
-/* Extra polish */
+/* Pinned and archived icons */
 .pinned {
   color: gold;
+  margin-left: 5px;
 }
-
 .archived {
   color: gray;
+  margin-left: 5px;
 }
