@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Note
 from .forms import NoteForm
+from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
+@login_required
 def note_list(request):
     """
     Display for all notes.
@@ -22,13 +23,14 @@ def note_list(request):
     # Context dictionary to pass data.
     context = {
         "notes": notes,
+        "show_archived": show_archived,
         "page_title": "List of Notes",
-        "show_archived": show_archived
     }
 
     return render(request, "notes/notes_list.html", context)
 
 
+@login_required
 def note_detail(request, pk):
     """
     View to display a specific notes detail.
@@ -42,6 +44,7 @@ def note_detail(request, pk):
     return render(request, "notes/note_detail.html", {"note": note})
 
 
+@login_required
 def note_create(request):
     """
     View to create a new note.
@@ -62,6 +65,7 @@ def note_create(request):
     return render(request, "notes/note_form.html", {"form": form})
 
 
+@login_required
 def note_update(request, pk):
     """
     View to update an existing note.
@@ -80,9 +84,11 @@ def note_update(request, pk):
             return redirect("note_list")
     else:
         form = NoteForm(instance=note)
+
     return render(request, "notes/note_form.html", {"form": form})
 
 
+@login_required
 def note_delete(request, pk):
     """
     View to delete an existing note.
@@ -96,10 +102,11 @@ def note_delete(request, pk):
     if request.method == "POST":
         note.delete()
         return redirect("note_list")
-
+    
     return render(request, "ntoes/notes_confirm_delete.html", {"notes": note})
 
 
+@login_required
 def toggle_pin(request, pk):
     """
     View to toggle the pinned status of a note.
@@ -111,9 +118,11 @@ def toggle_pin(request, pk):
     note = get_object_or_404(Note, pk=pk, user=request.user, archived=False)
     note.pinned = not note.pinned
     note.save()
+
     return redirect("note_list")
 
 
+@login_required
 def toggle_archive(request, pk):
     """
     View to toggle the archived status of a note.
@@ -124,5 +133,8 @@ def toggle_archive(request, pk):
     """
     note = get_object_or_404(Note, pk=pk, user=request.user)
     note.archived = not note.archived
+    if note.archived:
+        note.pinned = False
     note.save()
+    
     return redirect("note_list")

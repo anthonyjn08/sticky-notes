@@ -15,7 +15,10 @@ class NoteForm(forms.ModelForm):
         model = Note
         fields = ["title", "content", "priority"]
         widgets = {
-            "title": forms.TextInput(attrs={"class": "form-control"}),
-            "content": forms.Textarea(attrs={"class": "form-control", "rows": 5}),
-            "priority": forms.Select(attrs={"class": "form-select"}),
+            "title": forms.TextInput(
+                attrs={"class": "form-control"}),
+            "content": forms.Textarea(
+                attrs={"class": "form-control", "rows": 4}),
+            "priority": forms.Select(
+                attrs={"class": "form-select"}),
         }
