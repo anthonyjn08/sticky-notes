@@ -5,6 +5,13 @@ body {
   font-style: normal;
 }
 
+/* Yellow underline for navbar brand */
+.underline-yellow {
+  text-decoration: underline;
+  text-decoration-color: goldenrod; /* or yellow */
+  text-underline-offset: 4px; /* space between text & underline */
+}
+
 /* Common card styles */
 .note-card {
   border: 1px solid black;
@@ -12,10 +19,17 @@ body {
   border-radius: 0.25rem;
   margin-bottom: 1rem;
   height: 15rem;
-  overflow: hidden;
+  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* Card footer */
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Common title styles */

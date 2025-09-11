@@ -26,17 +26,10 @@
 
 </head>
 <body class="bg-light">
-    {# Header #}
-    <div class="bg-primary text-white py-2 px-3">
-        {% block header %}
-        <h1 class="h4 mb-0">Sticky Notes</h1>
-        {% endblock %}
-    </div>
-
     {# Navbar #}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'note_list' %}">Sticky Notes</a>
+            <a class="navbar-brand fs-1 underline-yellow" href="{% url 'note_list' %}">Sticky Notes! <i class="fa-regular fa-note-sticky"></i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNav" aria-controls="navbarNav"
                     aria-expanded="false" aria-label="Toggle navigation">

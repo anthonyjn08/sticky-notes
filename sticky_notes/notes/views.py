@@ -24,7 +24,7 @@ def note_list(request):
     context = {
         "notes": notes,
         "show_archived": show_archived,
-        "page_title": "List of Notes",
+        "page_title": "My Notes",
     }
 
     # Set shadow and title classes for template
