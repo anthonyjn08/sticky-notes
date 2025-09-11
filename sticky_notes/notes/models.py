@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 # Create your models here.
@@ -41,7 +42,23 @@ class Note(models.Model):
     pinned = models.BooleanField(default=False)
     archived = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        # If the note already exists in the DB, check for real content changes
+        if self.pk is not None:
+            old_note = Note.objects.get(pk=self.pk)
+            if (
+                old_note.title != self.title
+                or old_note.content != self.content
+                or old_note.priority != self.priority
+            ):
+                self.updated_at = timezone.now()
+        else:
+            # New notes should start with updated_at as None
+            self.updated_at = None
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
