@@ -1,0 +1,37 @@
+{% extends "notes/base.html" %}
+{% block title %}{{ note.title }}{% endblock %}
+
+{% block content %}
+    <div class="card priority-{{ note.priority }} p-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="note-title">{{ note.title }}</h2>
+            <div>
+                {% if note.pinned %}
+                    <i class="fas fa-thumbtack pinned"></i>
+                {% endif %}
+                {% if note.archived %}
+                    <i class="fas fa-clock archived"></i>
+                {% endif %}
+            </div>
+        </div>
+
+        <p>{{ note.content }}</p>
+
+        <small class="text-muted d-block mb-3">
+            Created: {{ note.created_at|date:"Y-m-d H:i" }} <br>
+            Updated: {{ note.updated_at|date:"Y-m-d H:i" }}
+        </small>
+
+        <div class="d-flex justify-content-between">
+            <a href="{% url 'note_update' note.pk %}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Edit Note
+            </a>
+            <a href="{% url 'note_delete' note.pk %}" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Delete
+            </a>
+            <a href="{% url 'note_list' %}" class="btn btn-secondary">
+                Back to Notes
+            </a>
+        </div>
+    </div>
+{% endblock %}

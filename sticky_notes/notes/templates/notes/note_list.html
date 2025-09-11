@@ -1,0 +1,59 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block title %}Notes{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
+    <h2>{{ page_title }}</h2>
+    <div>
+        <a href="{% url 'note_create' %}" class="btn btn-primary">Create Note</a>
+        {% if show_archived %}
+            <a href="{% url 'note_list' %}" class="btn btn-secondary">Show Active</a>
+        {% else %}
+            <a href="{% url 'note_list' %}?archived=1" class="btn btn-secondary">Show Archived</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    {% for note in notes %}
+        <div class="col-md-4 mb-3">
+            <div class="card priority-{{ note.priority }} p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="note-title">
+                        <a href="{% url 'note_detail' note.pk %}" class="text-decoration-none text-dark">
+                            {{ note.title }}
+                        </a>
+                    </h5>
+                    <div>
+                        {% if note.pinned %}
+                            <i class="fas fa-thumbtack pinned"></i>
+                        {% endif %}
+                        {% if note.archived %}
+                            <i class="fas fa-clock archived"></i>
+                        {% endif %}
+                    </div>
+                </div>
+                <p>{{ note.content|truncatewords:20 }}</p>
+                <small>
+                    Created: {{ note.created_at|date:"Y-m-d H:i" }} |
+                    Updated: {{ note.updated_at|date:"Y-m-d H:i" }}
+                </small>
+                <div class="mt-2">
+                    {% if not note.archived %}
+                        <a href="{% url 'toggle_pin' note.pk %}" class="btn btn-sm btn-outline-warning">
+                            {% if note.pinned %}Unpin{% else %}Pin{% endif %}
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'toggle_archive' note.pk %}" class="btn btn-sm btn-outline-secondary">
+                        {% if note.archived %}Unarchive{% else %}Archive{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No notes to show.</p>
+    {% endfor %}
+</div>
+{% endblock %}

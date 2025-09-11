@@ -103,7 +103,7 @@ def note_delete(request, pk):
         note.delete()
         return redirect("note_list")
     
-    return render(request, "ntoes/notes_confirm_delete.html", {"notes": note})
+    return render(request, "notes/notes_confirm_delete.html", {"notes": note})
 
 
 @login_required
