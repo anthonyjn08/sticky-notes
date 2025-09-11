@@ -28,5 +28,5 @@ urlpatterns = [
     path("", include("notes.urls")),
 
     # Custom users app for signup
-    path("users/", include("users.url"))
+    path("users/", include("users.urls"))
 ]
