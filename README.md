@@ -91,7 +91,7 @@ Run tests using:
     - registration/ `login, logout, password templates`
     - signup.html
   - users
-    - templates # Custom signup template
+    - templates `Custom signup template`
   - requirements.txt
   - README.md
 
