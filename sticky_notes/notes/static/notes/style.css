@@ -14,15 +14,22 @@ body {
 
 /* Common card styles */
 .note-card {
-  border: 1px solid black;
+  border: 1px solid #808080;
   padding: 1rem;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
   height: 15rem;
-  /* overflow: hidden; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* Card text truncate to 3 lines of note content */
+.note-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* Card footer */
@@ -68,4 +75,14 @@ body {
 .archived {
   color: gray;
   margin-left: 5px;
+}
+
+/* Media Queries */
+
+/* On small screens, truncate to 2 lines of content */
+@media (max-width: 576px) {
+  /* Bootstrap sm breakpoint */
+  .note-content {
+    -webkit-line-clamp: 2;
+  }
 }

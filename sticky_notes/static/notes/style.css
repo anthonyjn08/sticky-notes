@@ -1,9 +1,42 @@
+/* Body text style */
+body {
+  font-family: "Handlee", cursive;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Yellow underline for navbar brand */
+.underline-yellow {
+  text-decoration: underline;
+  text-decoration-color: goldenrod; /* or yellow */
+  text-underline-offset: 4px; /* space between text & underline */
+}
+
 /* Common card styles */
 .note-card {
-  border: 2px solid black;
+  border: 1px solid #808080;
   padding: 1rem;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Card text truncate to 3 lines of note content */
+.note-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Card footer */
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Common title styles */
@@ -14,14 +47,14 @@
 
 /* Priority-specific shadows */
 .shadow-low {
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-} /* Low */
+  box-shadow: 10px 15px rgba(0, 128, 0, 0.5);
+}
 .shadow-medium {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-} /* Medium */
+  box-shadow: 10px 15px rgba(255, 215, 0, 0.7);
+}
 .shadow-high {
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.5);
-} /* High */
+  box-shadow: 10px 15px rgba(255, 0, 0, 0.5);
+}
 
 /* Title underline colors */
 .note-card .high {
@@ -42,4 +75,14 @@
 .archived {
   color: gray;
   margin-left: 5px;
+}
+
+/* Media Queries */
+
+/* On small screens, truncate to 2 lines of content */
+@media (max-width: 576px) {
+  /* Bootstrap sm breakpoint */
+  .note-content {
+    -webkit-line-clamp: 2;
+  }
 }

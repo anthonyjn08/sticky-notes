@@ -128,6 +128,10 @@ STATICFILES_DIRS = [
 # Define the root directory for static files
 STATIC_ROOT = BASE_DIR / "static"
 
+# Authentication redirects
+LOGIN_REDIRECT_URL = "note_list"
+LOGOUT_REDIRECT_URL = "login"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 

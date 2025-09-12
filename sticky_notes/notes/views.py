@@ -20,11 +20,14 @@ def note_list(request):
         archived=show_archived
         ).order_by("-pinned", "-priority", "-created_at")
 
+    # Set dynamic page title
+    page_title = "Archived Notes" if show_archived else "My Notes"
+
     # Context dictionary to pass data.
     context = {
         "notes": notes,
         "show_archived": show_archived,
-        "page_title": "My Notes",
+        "page_title": page_title,
     }
 
     # Set shadow and title classes for template
@@ -115,7 +118,7 @@ def note_delete(request, pk):
         note.delete()
         return redirect("note_list")
 
-    return render(request, "notes/notes_confirm_delete.html", {"notes": note})
+    return render(request, "notes/note_confirm_delete.html", {"note": note})
 
 
 @login_required
