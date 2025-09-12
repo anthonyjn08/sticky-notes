@@ -9,7 +9,7 @@ class NoteForm(forms.ModelForm):
     Fields:
         - title: Charfield, uses nootstrap Text Input for title.
         - content: TextField, uses bootstrap text area for content.
-        - priority: IntegerField, uses bootstrp select to swt priority.
+        - priority: IntegerField, uses bootstrap select to set priority.
     """
     class Meta:
         model = Note
