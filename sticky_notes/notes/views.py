@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 def note_list(request):
     """
     Display for all notes.
-    
+
     - param request: HTTP request object.
     - return: Rendered template with all notes.
     """
@@ -114,7 +114,7 @@ def note_delete(request, pk):
     if request.method == "POST":
         note.delete()
         return redirect("note_list")
-    
+
     return render(request, "notes/notes_confirm_delete.html", {"notes": note})
 
 
@@ -148,5 +148,5 @@ def toggle_archive(request, pk):
     if note.archived:
         note.pinned = False
     note.save()
-    
+
     return redirect("note_list")
