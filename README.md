@@ -81,14 +81,14 @@ Run tests using:
 ## Project Structure
 
 - sticky_notes/
-  - sticky_notes # Main app
+  - sticky_notes `Main app`
     - manage.py
   - notes/
     - migrations/
-    - static/css # Custom CSS
-    - templates/notes/ # Notes views html template
+    - static/css `Custom CSS`
+    - templates/notes/ `Notes views html template`
   - templates/
-    - registration/ # login, logout, password templates
+    - registration/ `login, logout, password templates`
     - signup.html
   - users
     - templates # Custom signup template
