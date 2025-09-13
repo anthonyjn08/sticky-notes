@@ -13,3 +13,8 @@ venv/
 
 # Database
 *.db
+
+# Files
+sticky_github.txt
+Sticky Notes 1 part 2 questions.txt
+*.pdf
