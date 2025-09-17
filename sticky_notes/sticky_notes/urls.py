@@ -21,12 +21,9 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
 
-    # Django built in authentication
-    path("accounts/", include("django.contrib.auth.urls")),
-
     # URL patterns from hte 'notes' app.
     path("", include("notes.urls")),
 
     # Custom users app for signup
-    path("accounts/", include("users.urls"))
+    path("accounts/", include("users.urls")),
 ]
